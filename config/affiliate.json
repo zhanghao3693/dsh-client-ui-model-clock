@@ -34,11 +34,16 @@
       "badge": "2000万Tokens",
       "benefit": "通过邀请链接注册即得 2000 万 Tokens 大礼包；GLM-5.3 旗舰模型，推理 / 代码 / 智能体综合能力达开源 SOTA。",
       "rewardType": "invite_both",
-      "providerIds": ["zhipu"],
-      "routerProviderIds": ["zai-coding-cn"],
-      "verifyStatus": "pending",
-      "verifyNote": "⚠️ 待核实：2026-09-21 实测该邀请链接返回 HTTP 200，但页面为 SPA 骨架、静态 HTML 中无任何活动文案，无法确认活动是否仍有效。另有情报称智谱「拼好模」邀请活动已于 2026-07-09 下线。上线前须以登录态实际访问确认；若已失效应先下架本条，不得保留失效的推广链接。",
-      "note": "插件最匹配的一家：智谱 Coding Plan 的非高峰 50% 抵扣已从官方文档一手核实，是当前唯一在生效的套餐级时段折扣。"
+      "providerIds": [
+        "zhipu"
+      ],
+      "routerProviderIds": [
+        "zai-coding-cn"
+      ],
+      "verifyStatus": "verified",
+      "verifyNote": "2026-09-21 由作者以真实账号确认邀请链接有效（通过该链接注册可得 2000 万 Tokens 礼包）。此前因页面为 SPA 骨架而标记待核，现已解除。",
+      "note": "插件最匹配的一家：智谱 Coding Plan 的非高峰 50% 抵扣已从官方文档一手核实，是当前唯一在生效的套餐级时段折扣。",
+      "verifiedAt": "2026-09-21"
     },
     {
       "id": "siliconflow",
@@ -48,7 +53,9 @@
       "badge": "新人福利",
       "benefit": "完成实名认证可得 ¥16 全平台通用代金券，可用于抵扣 API 调用；支持 DeepSeek、Qwen 等主流开源模型。",
       "rewardType": "invite_both",
-      "providerIds": ["siliconflow"],
+      "providerIds": [
+        "siliconflow"
+      ],
       "routerProviderIds": [],
       "note": "其 DeepSeek-V4-Flash 有 02:00–08:00 闲时价（约 3.33 折），是插件调度建议里省幅最大的一家。"
     },
@@ -60,7 +67,9 @@
       "badge": "首购8折",
       "benefit": "阿里云新客户首购享 8 折补贴；百炼（Model Studio）Token Plan 有 22:00–08:00 夜间五折。",
       "rewardType": "cps",
-      "providerIds": ["aliyun-bailian"],
+      "providerIds": [
+        "aliyun-bailian"
+      ],
       "routerProviderIds": [],
       "note": "CPS 链接为阿里云通用首购优惠，非百炼专属活动页；面向百炼的具体折扣以其 Token Plan 页为准。"
     },
@@ -72,7 +81,9 @@
       "badge": "合作专享",
       "benefit": "腾讯云合作伙伴专享入口；Token Plan 侧 9 月有限时优惠（Auto / Kimi K2.7 Code / MiniMax-M3 五折）。",
       "rewardType": "cps",
-      "providerIds": ["tencent-cloud"],
+      "providerIds": [
+        "tencent-cloud"
+      ],
       "routerProviderIds": [],
       "note": "腾讯云 Token Plan 为积分/套餐制，其折扣深度不可与其他家的按量单价横向比较。"
     },
@@ -85,41 +96,65 @@
       "benefit": "通过邀请链接完成实名认证，你我各得 1000 万 Tokens（叠加平台新人礼包最高可得 2000 万）；首购下单返实付金额 5%。",
       "rewardType": "invite_both",
       "providerIds": [],
-      "routerProviderIds": ["longcat"],
+      "routerProviderIds": [
+        "longcat"
+      ],
       "note": "★ 本条目只对 dsh 模型调度有意义：LongCat 是 dsh-llm-router 的 longContextBackend（长上下文走 LongCat-2.0），但插件定价数据集未覆盖它（该平台无公开的余量/价格查询接口）。"
+    },
+    {
+      "id": "volcano-coding-plan",
+      "name": "火山方舟 · Coding Plan",
+      "url": "https://volcengine.com/L/ctwEY-4gCoY/",
+      "inviteCode": "T5BK3K2L",
+      "badge": "受邀9.5折",
+      "benefit": "方舟 Coding Plan 支持 GLM-5.3 系列、DeepSeek-V4 系列（正式版）、Doubao-Seed-Evolving、MiniMax-M3 等模型，工具不限。通过邀请入口订阅可叠加 9.5 折。",
+      "rewardType": "invite_both",
+      "providerIds": [
+        "volcano-ark"
+      ],
+      "routerProviderIds": [],
+      "verifiedAt": "2026-09-21",
+      "verifyNote": "2026-09-21 实测：短链 301 至 activity/codingplan?ac=MMAP8JTTCAQ2&rc=T5BK3K2L，落地页含「受邀再享9.5折」与「方舟 Coding Plan」，邀请码生效。"
     }
   ],
   "availablePlans": [
     {
       "id": "baidu-ambassador",
-      "providerIds": ["baidu-qianfan"],
+      "providerIds": [
+        "baidu-qianfan"
+      ],
       "name": "百度智能云 · 云推广大使（邀新返利）",
       "planUrl": "https://cloud.baidu.com/campaign/ambassador/index.html",
       "reward": "现金返佣，页面标注「最高返佣 34%」；规则文档给出的基础比例为 20%",
       "eligibility": "★ 仅限百度智能云官网**已实名认证的个人用户**。企业用户、代理商员工、内部与合作伙伴员工均不可参与。",
-      "status": "ready_to_join",
+      "status": "awaiting_link",
       "verifiedAt": "2026-09-21",
       "verifiedHow": "活动页静态 HTML 原文核实（含「最高返佣34%」「仅限已实名认证的个人用户参与」）",
       "urgencyNote": "★ 高优先级：这是目前唯一确认「现金返佣 + 明确仅限个人」的计划，其余平台的奖励多为代金券或平台赠金。且百度千帆在插件里是重要平台（全时段梯度折扣，夜间低至 0.5 折）。",
       "blockingRisk": "⚠️ 规则原文：个人实名认证后续变更为企业的，所有推广收益无法结算。作者正在注册北京公司主体——若打算变更百度账号主体，须先确认已产生的收益是否受影响。",
-      "nextStep": "作者以个人实名身份申请成为云推广大使 → 在后台生成专属推广链接 → 回填到本文件 items 段。"
+      "nextStep": "作者已申请成为云推广大使，但专属推广链接尚未取得——推广素材页需登录态的百度账号。待作者提供链接后填入 items。"
     },
     {
       "id": "volcano-coding-plan-invite",
-      "providerIds": ["volcano-ark"],
+      "providerIds": [
+        "volcano-ark"
+      ],
       "name": "火山引擎 · Coding Plan 限时邀请活动",
       "planUrl": "https://www.volcengine.com/docs/ark/coding-plan-personal-limited-time-invitation-event",
       "reward": "受邀新用户订阅 Coding Plan 享折扣；邀请方获代金券奖励（非现金）",
       "eligibility": "限时活动，无需企业资质；具体条件以活动页为准",
-      "status": "ready_to_join",
+      "status": "joined",
       "verifiedAt": "2026-09-21",
       "validUntil": "2026-11-19",
       "expiryNote": "★ 限时活动，须在条目里带 validUntil；到期后必须自动降级为已结束，否则会继续展示失效的推广链接。",
-      "nextStep": "作者参与活动 → 取得专属邀请码/链接 → 回填到 items 段。"
+      "nextStep": "作者参与活动 → 取得专属邀请码/链接 → 回填到 items 段。",
+      "note": "2026-09-21 已接入 items（作者提供专属邀请链接，邀请码 T5BK3K2L）。"
     },
     {
       "id": "scnet-invite",
-      "providerIds": ["scnet"],
+      "providerIds": [
+        "scnet"
+      ],
       "name": "国家超算互联网 · 邀请活动",
       "planUrl": null,
       "reward": "双向代金券奖励",
@@ -141,19 +176,27 @@
   ],
   "excluded": [
     {
-      "providerIds": ["deepseek"],
+      "providerIds": [
+        "deepseek"
+      ],
       "reason": "DeepSeek 官方无面向开发者的推广/邀请返利计划。★ 这一点很重要：插件最常推荐的平台（闲时半价最便宜）恰好没有返利——排序中立性因此有天然保障。"
     },
     {
-      "providerIds": ["moonshot"],
+      "providerIds": [
+        "moonshot"
+      ],
       "reason": "Kimi / 月之暗面无可参与的 API 推广计划：仅见 C 端会员抽奖类邀请，且邀请任务在页面上标注「任务已暂停」。不填入 items。"
     },
     {
-      "providerIds": ["minimax"],
+      "providerIds": [
+        "minimax"
+      ],
       "reason": "未能确认有效的推广计划：疑似相关活动页返回 404，官方文档未公开奖励规则。按「不确定即不接」处理，避免展示无法兑现的福利。"
     },
     {
-      "providerIds": ["zhipu-intl"],
+      "providerIds": [
+        "zhipu-intl"
+      ],
       "reason": "智谱国际版 Z.ai：未确认是否与国内版共用推广体系，且与国内版是两套独立账号，暂不接。"
     }
   ]

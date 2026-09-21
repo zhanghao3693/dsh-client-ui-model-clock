@@ -100,7 +100,10 @@ console.log('\n=========== ③ GET /affiliate ===========');
 const listRes = await call(handler, mockReq('GET', X.ROUTE_PREFIX));
 eq('HTTP 200', listRes.code, 200);
 eq('ok', listRes.json?.ok, true);
-eq('条目数', listRes.json?.items?.length, 5);
+// 不硬编码条目数：改为与配置文件交叉验证。这样日后增删推广条目时
+// 断言仍有效（且更强——它同时检查路由返回与配置是否一致）。
+const expectedCount = X.loadAffiliateConfig().items.length;
+eq('条目数（与配置交叉验证）', listRes.json?.items?.length, expectedCount);
 truthy('含 disclosure', typeof listRes.json?.disclosure === 'string');
 truthy('disclosure 含法定字样「广告」', String(listRes.json?.disclosure).indexOf('广告') !== -1);
 truthy('条目结构完整（id/name/url/benefit）',
@@ -166,7 +169,7 @@ eq('返回 allow 头', m.headers?.allow, 'GET, POST');
 console.log('\n=========== ⑧ 配置不可用时的降级 ===========');
 const cfg = X.loadAffiliateConfig();
 truthy('能读到 config/affiliate.json', cfg && Array.isArray(cfg.items));
-eq('条目数一致', cfg.items.length, 5);
+eq('路由返回数与配置一致', listRes.json.items.length, cfg.items.length);
 truthy('配置含合规留档', Boolean(cfg.meta?.compliance));
 eq('合规留档记录了法定标识', cfg.meta?.compliance?.requiredMarker, '广告');
 truthy('合规留档记录了禁止事项', Array.isArray(cfg.meta?.compliance?.prohibitions));
