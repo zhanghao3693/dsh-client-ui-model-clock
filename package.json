@@ -1,0 +1,65 @@
+{
+  "name": "dsh-client-ui-model-clock",
+  "version": "0.2.0",
+  "description": "DeepSeek Harness 模型使用时钟 —— 实时显示此刻最划算的模型、全天成本热力带、限时优惠倒计时与「等一等更省」调度建议。内置国内 11 家平台的时间窗优惠数据，每条优惠均带官方来源与核实时间。",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/client.js",
+    "config/affiliate.json",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "cordis",
+    "plugin",
+    "client-ui",
+    "model-clock",
+    "llm-pricing",
+    "off-peak",
+    "cost-optimization"
+  ],
+  "license": "MIT",
+  "author": "zhanghao3693",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhanghao3693/dsh-client-ui-model-clock.git"
+  },
+  "homepage": "https://dpharness.com",
+  "bugs": {
+    "url": "https://github.com/zhanghao3693/dsh-client-ui-model-clock/issues"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh": "*"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-runtime",
+        "@deepseek-ai/dsh-client-ui-slots",
+        "@deepseek-ai/dsh-client-ui-conversation"
+      ]
+    },
+    "engines": {
+      "dsh": ">=0.1.0-rc.5"
+    }
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
