@@ -120,6 +120,33 @@ dsh plugin --profile web add ./dsh-client-ui-model-clock
 
 ---
 
+## 与模型调度的配合（dsh-llm-router）
+
+若同时安装了 `dsh-llm-router`，它会在**选中某个 backend 之后**附加一条返利提示：
+
+```
+llm-router: [sess-xxx] 提示：智谱 BigModel 是作者有推广关系的平台（2000万Tokens）。仅为展示提示，未参与本次选择。
+```
+
+该提示通过 `/api/llm-router/routes` 的 `affiliate` 字段透出，供界面展示。
+
+**它不影响模型选择，而且是结构上的不可能，不是靠自觉：**
+
+- 查询点在 `decide()` 与 fallback 循环**定论之后**（`adopted = true` 之后），时序上参与不了选择
+- `decide()` / `estimateInputChars()` / `requestHasImage()` 等选择逻辑的函数体内**无任何返利标识符**
+- `affiliate` 字段不含 `weight`/`score`/`priority` 之类排序语义
+
+router 侧用的是**内联查表**（不调本插件的 HTTP 路由），因为它也要能在 `tui`/`headless` profile 下工作——那里没有 `webServer`。代价是可能与 `config/affiliate.json` 漂移，因此有校验脚本强制两边一致：
+
+```bash
+node verify-router-hint-sync.mjs          # 44 项：一致性 + 中立性 + 时序 + 端到端集成
+DSH_ROUTER_PATH=/path/to/dsh-llm-router node verify-router-hint-sync.mjs
+```
+
+**改 `config/affiliate.json` 的 `routerProviderIds` 后，必须同步改 router 的 `AFFILIATE_HINTS` 并重跑该脚本**，否则 router 里会残留过时提示。
+
+---
+
 ## 数据说明（请务必阅读）
 
 - 插件**内置一份人工核实的数据集**，离线可用，随插件版本更新。
@@ -197,7 +224,9 @@ node verify-host-routes.mjs
 | `POST /api/model-clock/affiliate/click` | 点击归因（进程内计数） |
 | `GET /api/model-clock/affiliate/stats` | 归因统计 |
 
-`resolve` 的返回**只描述商业关系，不含任何可用作排序的权重**。任何消费方（如 `dsh-llm-router`）只允许在**已选定 backend 之后**用它做展示提示，不得据此选择模型。
+`resolve` 的返回**只描述商业关系，不含任何可用作排序的权重**。任何消费方只允许在**已选定 backend 之后**用它做展示提示，不得据此选择模型。
+
+⚠️ **但 `dsh-llm-router` 实际并不调用这些接口** —— 它用的是内联查表，理由见上一节：它也要能在没有 `webServer` 的 `tui`/`headless` profile 下工作，而查表没有失败模式。这几个接口主要服务于本插件自己的浏览器侧客户端（取权威配置源）与归因。
 
 ## License
 
