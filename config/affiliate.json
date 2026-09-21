@@ -115,6 +115,21 @@
       "routerProviderIds": [],
       "verifiedAt": "2026-09-21",
       "verifyNote": "2026-09-21 实测：短链 301 至 activity/codingplan?ac=MMAP8JTTCAQ2&rc=T5BK3K2L，落地页含「受邀再享9.5折」与「方舟 Coding Plan」，邀请码生效。"
+    },
+    {
+      "id": "baidu-ambassador-product",
+      "name": "百度智能云 · 大使邀新特惠专场",
+      "url": "https://cloud.baidu.com/campaign/ambassador-product/index.html?ambassadorId=804d5d4644dc44349eba35669ee94bf6",
+      "inviteCode": null,
+      "badge": "新客低至1折",
+      "benefit": "百度智能云「大使邀新特惠专场」：热销千帆大模型、AI 原生应用、云服务器等多款产品低至 1 折；另有 20 元大模型新用户代金券（限官网/控制台购买千帆产品）。仅限新用户或产品新用户（不含代理商伙伴及代理商客户）；活动价不可与其他优惠叠加，不支持降配、退款。",
+      "rewardType": "cps",
+      "providerIds": [
+        "baidu-qianfan"
+      ],
+      "routerProviderIds": [],
+      "verifiedAt": "2026-09-21",
+      "verifyNote": "2026-09-21 实测 HTTP 200，页面标题「百度智能云-推广上云福利-大使邀新专场」，正文含「推广新客专享」「仅限推广大使引荐用户购买」「低至1折」等原文，链接有效。同时实测用户原链接携带的 #knowledge-model 为死锚点（157 个 id 无匹配、页面未滚动），已移除该片段，追踪参数未改动。"
     }
   ],
   "availablePlans": [
@@ -127,12 +142,13 @@
       "planUrl": "https://cloud.baidu.com/campaign/ambassador/index.html",
       "reward": "现金返佣，页面标注「最高返佣 34%」；规则文档给出的基础比例为 20%",
       "eligibility": "★ 仅限百度智能云官网**已实名认证的个人用户**。企业用户、代理商员工、内部与合作伙伴员工均不可参与。",
-      "status": "awaiting_link",
+      "status": "joined",
       "verifiedAt": "2026-09-21",
       "verifiedHow": "活动页静态 HTML 原文核实（含「最高返佣34%」「仅限已实名认证的个人用户参与」）",
       "urgencyNote": "★ 高优先级：这是目前唯一确认「现金返佣 + 明确仅限个人」的计划，其余平台的奖励多为代金券或平台赠金。且百度千帆在插件里是重要平台（全时段梯度折扣，夜间低至 0.5 折）。",
       "blockingRisk": "⚠️ 规则原文：个人实名认证后续变更为企业的，所有推广收益无法结算。作者正在注册北京公司主体——若打算变更百度账号主体，须先确认已产生的收益是否受影响。",
-      "nextStep": "作者已申请成为云推广大使，但专属推广链接尚未取得——推广素材页需登录态的百度账号。待作者提供链接后填入 items。"
+      "nextStep": "已完成接入。后续如大使后台生成新的商品链接，替换 items 中该条即可。",
+      "note": "2026-09-21 已接入 items：作者提供大使邀新专场链接（ambassadorId 追踪）。本链接是「邀新特惠专场」商品页，面向新客的产品折扣；另有现金返佣由百度按大使规则结算。"
     },
     {
       "id": "volcano-coding-plan-invite",
