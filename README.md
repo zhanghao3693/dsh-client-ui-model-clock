@@ -46,15 +46,23 @@
 ## 安装
 
 ```bash
-dsh plugin add zhanghao3693/dsh-client-ui-model-clock
+dsh plugin --profile web add zhanghao3693/dsh-client-ui-model-clock
 ```
 
 或从源码安装：
 
 ```bash
 git clone https://github.com/zhanghao3693/dsh-client-ui-model-clock
-dsh plugin add ./dsh-client-ui-model-clock
+dsh plugin --profile web add ./dsh-client-ui-model-clock
 ```
+
+> ⚠️ `--profile web` 是 dsh CLI 的**必需参数**，省略会直接报
+> `required option '--profile <name>' not specified`。
+> 任何来源给出的 `dsh plugin add <目标>`（无论仓库名还是本地路径）都不可用。
+>
+> 该命令会把本插件并入 profile 的 layer 栈（依赖 `package.json` 的 `dsh.bundle.patch`
+> 指向 `cordis.patch.yml`；缺了它插件只会被当成普通依赖装进去，**进程不会加载它**，
+> 表现为「装成功但没反应」）。装完若未生效，重启 dsh 即可。
 
 安装后在对话视图的标签页中选择「🕐 模型使用时钟」即可。
 
